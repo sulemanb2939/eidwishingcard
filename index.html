@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Create beautiful, personalized Eid greeting cards with 25+ premium templates. Download and share instantly. Eid Mubarak Card Generator."/>
+  <title>Eid Card Generator — Premium Eid Mubarak Cards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- ===== HOMEPAGE ===== -->
+  <div id="homepage" class="page active">
+    <!-- Starfield -->
+    <canvas id="starCanvas"></canvas>
+    <!-- Bokeh particles -->
+    <div class="bokeh-layer" id="bokehLayer"></div>
+
+    <nav class="navbar">
+      <div class="nav-logo">
+        <span class="logo-arabic">عيد</span>
+        <span class="logo-text">Card Studio</span>
+      </div>
+      <button class="btn-nav" id="navCreateBtn">Create Card</button>
+    </nav>
+
+    <main class="hero">
+      <div class="moon-container">
+        <div class="moon-glow"></div>
+        <div class="moon" id="heroMoon">
+          <div class="moon-crater c1"></div>
+          <div class="moon-crater c2"></div>
+          <div class="moon-crater c3"></div>
+        </div>
+        <div class="crescent-star">★</div>
+      </div>
+
+      <div class="hero-content">
+        <p class="hero-tagline" id="heroTagline">✨ Eid Celebration 2026 ✨</p>
+        <h1 class="hero-title" id="heroTitle">
+          <span class="title-line-1">عید مبارک</span>
+          <span class="title-line-2">Eid Mubarak</span>
+        </h1>
+        <p class="hero-dua" id="heroDua">تَقَبَّلَ اللهُ مِنَّا وَمِنكُم</p>
+        <p class="hero-subtitle" id="heroSubtitle">
+          Create stunning personalized Eid cards with 25+ premium templates.<br/>
+          Share your blessings with the world in seconds.
+        </p>
+        <div class="hero-actions" id="heroActions">
+          <button class="btn-primary" id="heroCreateBtn">
+            <span>🎴 Create Your Eid Card</span>
+            <div class="btn-shimmer"></div>
+          </button>
+          <button class="btn-secondary" id="heroExploreBtn">Explore Templates</button>
+        </div>
+        <div class="hero-stats" id="heroStats">
+          <div class="stat"><span class="stat-num">25+</span><span class="stat-label">Templates</span></div>
+          <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Messages</span></div>
+          <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free</span></div>
+        </div>
+      </div>
+
+      <!-- Floating lanterns -->
+      <div class="lantern lantern-1">🪔</div>
+      <div class="lantern lantern-2">🏮</div>
+      <div class="lantern lantern-3">🪔</div>
+    </main>
+
+    <!-- Category showcase -->
+    <section class="showcase">
+      <h2 class="section-title">Choose Your Style</h2>
+      <div class="category-grid">
+        <div class="cat-card cat-minimal" data-cat="minimal" id="catMinimal">
+          <div class="cat-preview">🌙</div>
+          <span>Minimal</span>
+        </div>
+        <div class="cat-card cat-islamic" data-cat="islamic" id="catIslamic">
+          <div class="cat-preview">🕌</div>
+          <span>Islamic</span>
+        </div>
+        <div class="cat-card cat-dark" data-cat="dark" id="catDark">
+          <div class="cat-preview">✨</div>
+          <span>Dark Premium</span>
+        </div>
+        <div class="cat-card cat-floral" data-cat="floral" id="catFloral">
+          <div class="cat-preview">🌸</div>
+          <span>Floral</span>
+        </div>
+        <div class="cat-card cat-kids" data-cat="kids" id="catKids">
+          <div class="cat-preview">🎉</div>
+          <span>Kids &amp; Fun</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== CARD BUILDER PAGE ===== -->
+  <div id="builderPage" class="page">
+    <div class="builder-navbar">
+      <button class="btn-back" id="backBtn">← Back</button>
+      <div class="nav-logo">
+        <span class="logo-arabic">عيد</span>
+        <span class="logo-text">Card Studio</span>
+      </div>
+      <div id="darkToggle" class="dark-toggle" title="Toggle Dark Mode">🌙</div>
+    </div>
+
+    <div class="builder-layout">
+      <!-- LEFT: Template Selector -->
+      <aside class="template-panel">
+        <div class="panel-header">
+          <h2>Templates</h2>
+          <div class="filter-tabs" id="filterTabs">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="minimal">Minimal</button>
+            <button class="filter-tab" data-filter="islamic">Islamic</button>
+            <button class="filter-tab" data-filter="dark">Dark</button>
+            <button class="filter-tab" data-filter="floral">Floral</button>
+            <button class="filter-tab" data-filter="kids">Kids</button>
+          </div>
+        </div>
+        <div class="template-grid" id="templateGrid"></div>
+      </aside>
+
+      <!-- RIGHT: Preview + Controls -->
+      <main class="preview-panel">
+        <div class="controls-bar">
+          <div class="name-input-wrap">
+            <label for="nameInput">Your Name</label>
+            <input type="text" id="nameInput" placeholder="Enter your name..." maxlength="40" autocomplete="off"/>
+          </div>
+          <div class="action-buttons">
+            <button class="btn-action btn-download" id="downloadBtn">⬇ Download PNG</button>
+            <button class="btn-action btn-share" id="shareBtn">📤 Share Card (Image + Text)</button>
+          </div>
+        </div>
+
+        <!-- CARD PREVIEW -->
+        <div class="card-wrapper" id="cardWrapper">
+          <div class="card-preview" id="cardPreview">
+            <!-- Dynamically filled -->
+          </div>
+        </div>
+
+        <!-- SMS GENERATOR -->
+        <div class="sms-section">
+          <div class="sms-header">
+            <h3>💌 Eid Message Generator</h3>
+            <div class="sms-controls">
+              <button class="btn-sms-ctrl" id="prevSmsBtn">◀</button>
+              <span id="smsCounter">1 / 50</span>
+              <button class="btn-sms-ctrl" id="nextSmsBtn">▶</button>
+              <button class="btn-sms-ctrl" id="randomSmsBtn">🎲</button>
+            </div>
+          </div>
+          <div class="sms-card" id="smsCard">
+            <div class="sms-text" id="smsText"></div>
+          </div>
+          <div class="sms-actions">
+            <button class="btn-copy" id="copySmsBtn">📋 Copy Message</button>
+            <button class="btn-whatsapp-sms" id="whatsappSmsBtn">💬 Send via WhatsApp</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
